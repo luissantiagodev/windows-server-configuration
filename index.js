@@ -28,7 +28,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         let data = snapshot.val()
 
-        let path = `${__dirname}/../src/${data.id}.xls`
+        let path = `${__dirname}/src/${data.id}.xls`
 
 
         let command = `${EXCEL_EXE} "${path}"`
