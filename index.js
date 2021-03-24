@@ -30,9 +30,9 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         let path = `${__dirname}/../src/${data.id}.xls`
 
-        console.log(data)
 
         let command = `${EXCEL_EXE} "${path}"`
+        console.log(path)
         console.log(command)
 
         download(data.url, path, () => {
