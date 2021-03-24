@@ -59,7 +59,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
                     let result = [
                         {
                             score: `${worksheet.getCell('C425').value.result}`,
-                            scoreText: `${worksheet.getCell('C427').value}`,
+                            scoreText: `${worksheet.getCell('C427').value.result}`,
                             cell: `D424`
                         },
                         {
