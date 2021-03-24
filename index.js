@@ -27,7 +27,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         let data = snapshot.val()
 
-        let path = `${data.id}.xls`
+        let path = `${data.id}.xlsm`
         let command = `${EXCEL_EXE} "${__dirname}/${path}"`
 
         console.log(path)
@@ -51,5 +51,6 @@ const download = (uri, filename, callback) => {
     const file = fs.createWriteStream(filename);
     http.get(uri, (response) => {
         response.pipe(file);
+        callback()
     });
 };
