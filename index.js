@@ -32,7 +32,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         console.log(data)
 
-        let command = `${EXCEL_EXE} ${path}`
+        let command = `${EXCEL_EXE} "${path}"`
         console.log(command)
 
         download(data.url, path, () => {
