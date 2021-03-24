@@ -24,11 +24,25 @@ app.listen(PORT, () => console.log(`Listing in port ${PORT}`));
 
 firebaseHelper.admin.database().ref("listener_documents").child("document").on('value', (snapshot) => {
     if (snapshot.exists()) {
-        console.log(snapshot.val())
-        cmd.run(EXCEL_EXE, (err, data, stderr) => {
-                firebaseHelper.admin.database().ref("listener_documents").child("document").remote()
-            }
-        );
+
+
+        let data = snapshot.val()
+
+        let path = `${__dirname}/../src/${data.id}.xls`
+
+        console.log(data)
+
+
+        let command = `${EXCEL_EXE} ${path}`
+        console.log(command)
+
+        download(data.url, path, () => {
+            cmd.run(command, (err, data, stderr) => {
+                    firebaseHelper.admin.database().ref("listener_documents").child("document").remote()
+                }
+            );
+        })
+
 
     }
 
