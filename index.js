@@ -39,14 +39,14 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
         download(data.url, path, () => {
             cmd.run(command, (err, data, stderr) => {
                     firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
-
-                    setTimeout(() => {
-                        robot.mouseClick();
-                        robot.keyTap("left");
-                        robot.keyTap("enter");
-                    }, 1000)
                 }
             );
+
+            setTimeout(() => {
+                robot.mouseClick();
+                robot.keyTap("left");
+                robot.keyTap("enter");
+            }, 2000)
         })
 
 
