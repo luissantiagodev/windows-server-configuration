@@ -38,7 +38,6 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         download(data.url, path, () => {
             cmd.run(command, (err, data, stderr) => {
-                    firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
                 }
             );
 
@@ -46,6 +45,8 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
                 robot.mouseClick();
                 robot.keyTap("left");
                 robot.keyTap("enter");
+
+                firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
 
                 const workbook = new Excel.Workbook()
 
