@@ -24,8 +24,9 @@ app.listen(PORT, () => console.log(`Listing in port ${PORT}`));
 
 firebaseHelper.admin.database().ref("listener_documents").on('value', (snapshot) => {
 
+    console.log("Data writed")
+
     if (snapshot.exists()) {
-        console.log(snapshot.val())
         cmd.run(EXCEL_EXE, (err, data, stderr) => {
                 console.log('Running excel')
             }
