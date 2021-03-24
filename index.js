@@ -32,13 +32,12 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         console.log(data)
 
-
         let command = `${EXCEL_EXE} ${path}`
         console.log(command)
 
         download(data.url, path, () => {
             cmd.run(command, (err, data, stderr) => {
-                    firebaseHelper.admin.database().ref("listener_documents").child("document").remote()
+                    firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
                 }
             );
         })
