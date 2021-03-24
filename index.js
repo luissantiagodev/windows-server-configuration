@@ -45,6 +45,8 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
                 robot.mouseClick();
                 robot.keyTap("left");
                 robot.keyTap("enter");
+                robot.keyTap("control");
+                robot.keyTap("s");
 
                 firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
 
