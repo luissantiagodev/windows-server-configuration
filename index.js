@@ -28,16 +28,17 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
         let data = snapshot.val()
 
         let path = `${data.id}.xls`
-        let command = `${EXCEL_EXE} "${path}"`
+        let command = `${EXCEL_EXE} "${__dirname}/${path}"`
 
         console.log(path)
         console.log(command)
+        console.log(__dirname)
 
         download(data.url, path, () => {
-            /* cmd.run(command, (err, data, stderr) => {
+             cmd.run(command, (err, data, stderr) => {
                      firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
                  }
-             );*/
+             );
         })
 
 
