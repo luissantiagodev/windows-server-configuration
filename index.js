@@ -23,10 +23,8 @@ const uuid = require("uuid-v4");
 app.listen(PORT, () => console.log(`Listing in port ${PORT}`));
 
 firebaseHelper.admin.database().ref("listener_documents").on('value', (snapshot) => {
-
-    console.log("Data writed")
-
     if (snapshot.exists()) {
+        console.log(snapshot.exists())
         cmd.run(EXCEL_EXE, (err, data, stderr) => {
                 console.log('Running excel')
             }
