@@ -6,6 +6,8 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080;
 const http = require('https');
+const robot = require("robotjs");
+
 const EXCEL_EXE = " \"C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE\""
 
 require('core-js/modules/es.promise');
@@ -35,10 +37,15 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
         console.log(__dirname)
 
         download(data.url, path, () => {
-             cmd.run(command, (err, data, stderr) => {
-                     firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
-                 }
-             );
+            cmd.run(command, (err, data, stderr) => {
+                    firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
+
+                    setTimeout(() => {
+                        robot.keyTap("left");
+                        robot.keyTap("enter");
+                    }, 1000)
+                }
+            );
         })
 
 
