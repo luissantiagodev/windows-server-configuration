@@ -48,7 +48,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
                 setTimeout(()=>{
                     robot.keyTap("control");
-                    robot.keyTap("s");
+                    robot.keyTap("g");
 
                     firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
 
