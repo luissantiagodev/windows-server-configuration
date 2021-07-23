@@ -29,7 +29,7 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
         let data = snapshot.val()
 
-        let path = `${data.id}.xls`
+        let path = `${data.id}.xlsx`
         let command = `${EXCEL_EXE} "${__dirname}/${path}"`
 
         console.log(path)
@@ -43,89 +43,121 @@ firebaseHelper.admin.database().ref("listener_documents").child("document").on('
 
             setTimeout(() => {
                 robot.mouseClick();
+                robot.mouseClick();
                 robot.keyTap("left");
                 robot.keyTap("enter");
+                setTimeout(() => {
+                    robot.keyTap("enter");
 
-                setTimeout(()=>{
-                    robot.keyTap("control");
-                    robot.keyTap("g");
+                    setTimeout(() => {
+                        robot.keyTap("enter");
 
-                    firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
+                        setTimeout(() => {
 
-                    setTimeout(()=>{
-                        const workbook = new Excel.Workbook()
 
-                        workbook.xlsx.readFile(`${__dirname}/${path}`).then(() => {
+                            robot.keyToggle('alt', 'down');
+                            robot.keyTap('f4');
+                            robot.keyToggle('alt', 'up');
 
-                            const worksheet = workbook.worksheets[0]
 
-                            let result = [
-                                {
-                                    score: `${worksheet.getCell('C425').value.result}`,
-                                    scoreText: `${worksheet.getCell('C427').value.result}`,
-                                    cell: `D424`
-                                },
-                                {
-                                    score: `${worksheet.getCell('C433').value.result}`,
-                                    scoreText: `${worksheet.getCell('C435').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C435').value.result}`,
-                                    scoreText: `${worksheet.getCell('C442').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C447').value.result}`,
-                                    scoreText: `${worksheet.getCell('C449').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C454').value.result}`,
-                                    scoreText: `${worksheet.getCell('C456').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C461').value.result}`,
-                                    scoreText: `${worksheet.getCell('C463').value.result}`,
-                                    cell: "D432"
-                                }, {
-                                    score: `${worksheet.getCell('C468').value.result}`,
-                                    scoreText: `${worksheet.getCell('C470').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C475').value.result}`,
-                                    scoreText: `${worksheet.getCell('C477').value.result}`,
-                                    cell: "D432"
-                                }, {
-                                    score: `${worksheet.getCell('C482').value.result}`,
-                                    scoreText: `${worksheet.getCell('C484').value.result}`,
-                                    cell: "D432"
-                                },
-                                {
-                                    score: `${worksheet.getCell('C489').value.result}`,
-                                    scoreText: `${worksheet.getCell('C491').value.result}`,
-                                    cell: "D432"
-                                }, {
-                                    score: `${worksheet.getCell('C496').value.result}`,
-                                    scoreText: `${worksheet.getCell('C498').value.result}`,
-                                    cell: "D432"
-                                }
-                            ]
+                            setTimeout(() => {
+                                robot.keyTap("enter");
 
-                            firebaseHelper.admin.database().ref("results").child(data.id).set(JSON.stringify({results: result}))
-                        })
-                    }, 2000)
+                                setTimeout(() => {
+                                    robot.keyTap("enter");
+
+                                    setTimeout(() => {
+
+                                        robot.keyTap("left")
+
+                                        setTimeout(()=>{
+
+                                            robot.keyTap("enter");
+                                            //firebaseHelper.admin.database().ref("listener_documents").child("document").remove()
+                                            const workbook = new Excel.Workbook()
+                                            workbook.xlsx.readFile(`${__dirname}/${path}`).then(() => {
+
+                                                const worksheet = workbook.worksheets[0]
+
+                                                let result = [
+                                                    {
+                                                        score: `${worksheet.getCell('C425').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C427').value.result}`,
+                                                        cell: `D424`
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C433').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C435').value.result}`,
+                                                        cell: "D432"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C435').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C442').value.result}`,
+                                                        cell: "D439"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C447').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C449').value.result}`,
+                                                        cell: "D446"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C454').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C456').value.result}`,
+                                                        cell: "D453"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C461').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C463').value.result}`,
+                                                        cell: "D460"
+                                                    }, {
+                                                        score: `${worksheet.getCell('C468').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C470').value.result}`,
+                                                        cell: "D467"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C475').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C477').value.result}`,
+                                                        cell: "D474"
+                                                    }, {
+                                                        score: `${worksheet.getCell('C482').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C484').value.result}`,
+                                                        cell: "D481"
+                                                    },
+                                                    {
+                                                        score: `${worksheet.getCell('C489').value.result}`,
+                                                        scoreText: `${worksheet.getCell('C491').value.result}`,
+                                                        cell: "D488"
+                                                    }, {
+                                                        score: `${worksheet.getCell('C496').value.result ? worksheet.getCell('C496').value.result : ''}`,
+                                                        scoreText: `${worksheet.getCell('C498').value.result ? worksheet.getCell('C498').value.result : ''}`,
+                                                        cell: "D495"
+                                                    }
+                                                ]
+
+                                                firebaseHelper.admin.database().ref("results").child(data.id).set(JSON.stringify({results: result}))
+                                            })
+
+
+                                        }, 1000)
+
+
+
+
+                                    }, 1000)
+
+                                }, 1000)
+
+                            }, 1000)
+
+                        }, 1000)
+
+                    }, 1000)
+
+
                 }, 1000)
+                robot.moveMouse(20, 2);
+            }, 3000)
 
-
-
-
-
-
-
-            }, 2000)
         })
 
 
@@ -141,3 +173,7 @@ const download = (uri, filename, callback) => {
         callback()
     });
 };
+
+
+
+
